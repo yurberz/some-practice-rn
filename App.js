@@ -6,6 +6,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
 import MainTabScreen from './screens/MainTabScreen';
+import {BookmarkScreen, SettingsScreen, SupportScreen} from './screens';
+import CustomDrawer from './screens/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
 
@@ -14,13 +16,16 @@ const App = () => {
     <NavigationContainer>
       {/* <StatusBar barStyle="light-content" /> */}
       <Drawer.Navigator
+        drawerContent={props => <CustomDrawer {...props} />}
         screenOptions={{
-          drawerType: 'slide',
+          drawerType: 'front',
           headerShown: false,
         }}
         initialRouteName="home">
-        <Drawer.Screen name="Home" component={MainTabScreen} />
-        {/* <Drawer.Screen name="Details" component={DetailsStackScreen} /> */}
+        <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
+        <Drawer.Screen name="SupportScreen" component={SupportScreen} />
+        <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
+        <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
