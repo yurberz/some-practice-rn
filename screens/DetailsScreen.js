@@ -16,10 +16,6 @@ const DetailsScreen = ({navigation}) => {
         title="go to homeScreen"
       />
       <Button onPress={() => navigation.goBack()} title="go back" />
-      <Button
-        onPress={() => navigation.popToTop()}
-        title="go to the first screen"
-      />
     </View>
   );
 };

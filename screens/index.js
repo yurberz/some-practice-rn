@@ -5,6 +5,9 @@ import ProfileScreen from './ProfileScreen';
 import BookmarkScreen from './BookmarkScreen';
 import SettingsScreen from './SettingsScreen';
 import SupportScreen from './SupportScreen';
+import SignInScreen from './SignInScreen';
+import SignUpScreen from './SignUpScreen';
+import SplashScreen from './SplashScreen';
 
 export {
   HomeScreen,
@@ -14,4 +17,7 @@ export {
   BookmarkScreen,
   SettingsScreen,
   SupportScreen,
+  SignInScreen,
+  SignUpScreen,
+  SplashScreen,
 };

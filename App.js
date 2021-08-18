@@ -5,9 +5,10 @@ import {StatusBar} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import MainTabScreen from './screens/MainTabScreen';
 import {BookmarkScreen, SettingsScreen, SupportScreen} from './screens';
+import MainTabScreen from './screens/MainTabScreen';
 import CustomDrawer from './screens/CustomDrawer';
+import RootStackScreen from './screens/RootStackScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -15,7 +16,8 @@ const App = () => {
   return (
     <NavigationContainer>
       {/* <StatusBar barStyle="light-content" /> */}
-      <Drawer.Navigator
+      <RootStackScreen />
+      {/* <Drawer.Navigator
         drawerContent={props => <CustomDrawer {...props} />}
         screenOptions={{
           drawerType: 'front',
@@ -26,7 +28,7 @@ const App = () => {
         <Drawer.Screen name="SupportScreen" component={SupportScreen} />
         <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
         <Drawer.Screen name="BookmarkScreen" component={BookmarkScreen} />
-      </Drawer.Navigator>
+      </Drawer.Navigator> */}
     </NavigationContainer>
   );
 };
