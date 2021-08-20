@@ -12,6 +12,7 @@ import {
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {useTheme} from 'react-native-paper';
 
 import {AuthContext} from '../components/context';
 import Users from '../model/dummyData';
@@ -25,6 +26,8 @@ const SignInScreen = ({navigation}) => {
     isValidUser: true,
     isValidPassword: true,
   });
+
+  const {colors} = useTheme();
 
   const {signIn} = useContext(AuthContext);
 
@@ -113,13 +116,34 @@ const SignInScreen = ({navigation}) => {
       <View style={styles.header}>
         <Text style={styles.text_header}>welcome!</Text>
       </View>
-      <Animatable.View animation="fadeInUpBig" style={styles.footer}>
-        <Text style={styles.text_footer}>username</Text>
+      <Animatable.View
+        animation="fadeInUpBig"
+        style={[
+          styles.footer,
+          {
+            backgroundColor: colors.background,
+          },
+        ]}>
+        <Text
+          style={[
+            styles.text_footer,
+            {
+              color: colors.text,
+            },
+          ]}>
+          username
+        </Text>
         <View style={styles.action}>
-          <Ionicons name="person-outline" color="#05375a" size={20} />
+          <Ionicons name="person-outline" color={colors.text} size={20} />
           <TextInput
             placeholder="username"
-            style={styles.textInput}
+            placeholderTextColor="#666666"
+            style={[
+              styles.textInput,
+              {
+                color: colors.text,
+              },
+            ]}
             autoCapitalize="none"
             autoCorrect={false}
             onChangeText={val => textInputChange(val)}
@@ -151,13 +175,21 @@ const SignInScreen = ({navigation}) => {
           )}
         </View>
 
-        <Text style={[styles.text_footer, {marginTop: 35}]}>password</Text>
+        <Text style={[styles.text_footer, {marginTop: 35, color: colors.text}]}>
+          password
+        </Text>
         <View style={styles.action}>
-          <Ionicons name="lock-closed-outline" color="#05375a" size={20} />
+          <Ionicons name="lock-closed-outline" color={colors.text} size={20} />
           <TextInput
             placeholder="password"
+            placeholderTextColor="#666666"
             secureTextEntry={data.secureTextEntry ? true : false}
-            style={styles.textInput}
+            style={[
+              styles.textInput,
+              {
+                color: colors.text,
+              },
+            ]}
             autoCapitalize="none"
             onChangeText={val => handlePasswordChange(val)}
           />

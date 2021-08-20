@@ -11,10 +11,14 @@ import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import {useTheme} from '@react-navigation/native';
+
 const {height} = Dimensions.get('screen');
 const height_logo = height * 0.2;
 
 const SplashScreen = ({navigation}) => {
+  const {colors} = useTheme();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -28,8 +32,23 @@ const SplashScreen = ({navigation}) => {
           resizeMode="stretch"
         />
       </View>
-      <Animatable.View animation="fadeInUpBig" style={styles.footer}>
-        <Text style={styles.title}>hello!</Text>
+      <Animatable.View
+        animation="fadeInUpBig"
+        style={[
+          styles.footer,
+          {
+            backgroundColor: colors.background,
+          },
+        ]}>
+        <Text
+          style={[
+            styles.title,
+            {
+              color: colors.text,
+            },
+          ]}>
+          hello!
+        </Text>
         <Text style={styles.text}>sign in with acc</Text>
 
         <View style={styles.button}>

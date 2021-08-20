@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 
 import {View, StyleSheet} from 'react-native';
 import {
@@ -10,6 +10,7 @@ import {
   Text,
   TouchableRipple,
   Switch,
+  useTheme,
 } from 'react-native-paper';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -19,13 +20,9 @@ import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {AuthContext} from '../components/context';
 
 const CustomDrawer = props => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const paperTheme = useTheme();
 
-  const {signOut} = useContext(AuthContext);
-
-  const toggleTheme = () => {
-    setIsDarkTheme(!isDarkTheme);
-  };
+  const {signOut, toggleTheme} = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
@@ -120,7 +117,7 @@ const CustomDrawer = props => {
               <View style={styles.preference}>
                 <Text>dark theme</Text>
                 <View pointerEvents="none">
-                  <Switch value={isDarkTheme} />
+                  <Switch value={paperTheme.dark} />
                 </View>
               </View>
             </TouchableRipple>
