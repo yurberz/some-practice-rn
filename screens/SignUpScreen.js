@@ -182,14 +182,14 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 3,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF0F5',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
     paddingVertical: 30,
   },
   text_header: {
-    color: '#fff',
+    color: '#FFF0F5',
     fontWeight: '900',
     fontSize: 30,
   },
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
   },
   textSign: {
     fontSize: 18,
-    color: '#ffffff',
+    color: '#FFF0F5',
     fontWeight: '700',
   },
 });

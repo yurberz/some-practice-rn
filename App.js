@@ -58,20 +58,14 @@ const App = () => {
 
   const authContext = useMemo(
     () => ({
-      signIn: async (userName, password) => {
-        let userToken;
-        userToken = null;
+      signIn: async foundUser => {
+        const userToken = String(foundUser[0].userToken);
+        const userName = foundUser[0].username;
 
-        if (
-          userName === 'user' &&
-          password === 'pass' /* hard code user *through an API call*/
-        ) {
-          try {
-            userToken = 'blabla';
-            await AsyncStorage.setItem('userToken', userToken);
-          } catch (err) {
-            console.log(err);
-          }
+        try {
+          await AsyncStorage.setItem('userToken', userToken);
+        } catch (err) {
+          console.log(err);
         }
 
         dispatch({type: 'LOGIN', id: userName, token: userToken});

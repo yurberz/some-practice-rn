@@ -40,7 +40,7 @@ const SplashScreen = ({navigation}) => {
               colors={['#FFA07A', '#CD5C5C']}
               style={styles.signIn}>
               <Text style={styles.textSign}>get started</Text>
-              <Ionicons name="ios-chevron-forward" color="#ffffff" size={20} />
+              <Ionicons name="ios-chevron-forward" color="#FFF0F5" size={20} />
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFF0F5',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingVertical: 50,

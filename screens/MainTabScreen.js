@@ -78,7 +78,7 @@ const DetailsStackScreen = ({navigation}) => {
 
 const MainTabScreen = () => {
   return (
-    <Tab.Navigator initialRouteName="Home" activeColor="#ffffff">
+    <Tab.Navigator initialRouteName="Home" activeColor="#FFF0F5">
       <Tab.Screen
         name="Home"
         component={HomeStackScreen}
