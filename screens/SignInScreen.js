@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 
 import {
   StyleSheet,
@@ -12,25 +12,29 @@ import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import {AuthContext} from '../components/context';
+
 const SignInScreen = ({navigation}) => {
   const [data, setData] = useState({
-    email: '',
+    username: '',
     password: '',
     check_textInputChange: false,
     secureTextEntry: true,
   });
 
+  const {signIn} = useContext(AuthContext);
+
   const textInputChange = val => {
     if (val.length !== 0) {
       setData({
         ...data,
-        email: val,
+        username: val,
         check_textInputChange: true,
       });
     } else {
       setData({
         ...data,
-        email: val,
+        username: val,
         check_textInputChange: false,
       });
     }
@@ -50,6 +54,10 @@ const SignInScreen = ({navigation}) => {
     });
   };
 
+  const loginHandler = (username, password) => {
+    signIn(username, password);
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor="#fa8072" barStyle="light-content" />
@@ -57,11 +65,11 @@ const SignInScreen = ({navigation}) => {
         <Text style={styles.text_header}>welcome!</Text>
       </View>
       <Animatable.View animation="fadeInUpBig" style={styles.footer}>
-        <Text style={styles.text_footer}>email</Text>
+        <Text style={styles.text_footer}>username</Text>
         <View style={styles.action}>
           <Ionicons name="person-outline" color="#05375a" size={20} />
           <TextInput
-            placeholder="your email"
+            placeholder="username"
             style={styles.textInput}
             autoCapitalize="none"
             autoCorrect={false}
@@ -81,7 +89,7 @@ const SignInScreen = ({navigation}) => {
         <View style={styles.action}>
           <Ionicons name="lock-closed-outline" color="#05375a" size={20} />
           <TextInput
-            placeholder="your password"
+            placeholder="password"
             secureTextEntry={data.secureTextEntry ? true : false}
             style={styles.textInput}
             autoCapitalize="none"
@@ -96,9 +104,18 @@ const SignInScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.button}>
-          <LinearGradient colors={['#FFA07A', '#CD5C5C']} style={styles.signIn}>
-            <Text style={styles.textSign}>sign in</Text>
-          </LinearGradient>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.signIn}
+            onPress={() => {
+              loginHandler(data.username, data.password);
+            }}>
+            <LinearGradient
+              colors={['#FFA07A', '#CD5C5C']}
+              style={styles.signIn}>
+              <Text style={styles.textSign}>sign in</Text>
+            </LinearGradient>
+          </TouchableOpacity>
         </View>
         <TouchableOpacity
           activeOpacity={0.8}

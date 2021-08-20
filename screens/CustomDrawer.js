@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 
 import {View, StyleSheet} from 'react-native';
 import {
@@ -16,8 +16,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 
+import {AuthContext} from '../components/context';
+
 const CustomDrawer = props => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  const {signOut} = useContext(AuthContext);
 
   const toggleTheme = () => {
     setIsDarkTheme(!isDarkTheme);
@@ -130,7 +134,9 @@ const CustomDrawer = props => {
             <Ionicons name="log-out-outline" color={color} size={size} />
           )}
           label="sign out"
-          onPress={() => {}}
+          onPress={() => {
+            signOut();
+          }}
         />
       </Drawer.Section>
     </View>
